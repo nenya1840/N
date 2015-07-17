@@ -1,4 +1,4 @@
-    Handlebars.registerHelper("contains", function( collection, item, options ){
+    Handlebars.registerHelper("have", function( collection, item, options ){
         // "collection" check (objects & arrays)
         for( var prop in collection ){
             if( collection.hasOwnProperty( prop ) ){
