@@ -1,0 +1,6 @@
+    Handlebars.registerHelper("exclude", function( collection, item, options ){
+        //requires underscore.js
+        return collection = _.without(collection, _.findWhere(collection, {
+                locale: item
+        }));
+    });    
