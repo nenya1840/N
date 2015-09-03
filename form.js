@@ -1,20 +1,23 @@
-$(document).ready(function(){
+$(document).ready(function() {
 
-    $('#quote-given-yes').click(function () {
+    $('#quote-given-yes').click(function() {
         $("#quoteGivenEnter").fadeIn();
     });
 
-    $('#quote-given-no').parent().click(function () {
+    $('#quote-given-no').parent().click(function() {
         $("#quoteGivenEnter").fadeOut();
         $("#quoteGivenEnter").val('');
     });
 
-    $('.submit').click(function(){
-        validateForm(); 
-        $('input[aria-required="true"]').on( "change", function() {
+    $('.submit').click(function() {
+        validateForm();
+        $('input[required=""]').on("input", function() {
             validateForm();
         });
-        $('select').on( "change", function() {
+        $('.form-choice-selector[required=""]').on('click', function() {
+            validateForm();
+        });
+        $('select').on("change", function() {
             validateForm();
         });
         return false;
@@ -23,25 +26,38 @@ $(document).ready(function(){
     function validateForm() {
         console.log('validate');
         $('form').addClass('is-validated');
-        var inputs = $('input[aria-required="true"]');
-        inputs.each(function( index ) {
-            if($(this).val()===""){
+        var inputs = $('input[required=""]');
+        inputs.each(function(index) {
+            if ($(this).val() === "") {
                 $(this).addClass('is-error');
-                $(this).parent().find('.form-message-wrapper').show();
+                $(this).parent().find('.form-message-wrapper').first().show();
             } else {
-                $(this).removeClass('is-error');
-                $(this).parent().find('.form-message-wrapper').hide();
+                if ($(this).attr('type') === 'email') {
+                    $(this).removeClass('is-error');
+                    $(this).parent().find('.form-message-wrapper').first().hide();
+                    if ($("input[name='email']:valid").length === 0) {
+                        $("input[name='email']").addClass('is-error-pattern');
+                        $("#businessTeamForm-email-error-invalid").parent().show();
+                    } else {
+                        $("input[name='email']").removeClass('is-error-pattern');
+                        $("#businessTeamForm-email-error-invalid").parent().hide();
+                    }
+                } else {
+                    $(this).removeClass('is-error');
+                    $(this).parent().find('.form-message-wrapper').first().hide();
+                }
             }
         });
-        if ($('input[name="contactType"]:checked').length===0) {
+
+        if ($('input[name="contactType"]:checked').length === 0) {
             $('input[name="contactType"]').closest('.form-fieldset').addClass('is-error').find('.form-message-wrapper').show();
         } else {
             $('input[name="contactType"]').closest('.form-fieldset').removeClass('is-error').find('.form-message-wrapper').hide();
         }
-        if ($('select').val()===null) {
+        if ($('select').val() === null) {
             $('select').addClass('is-error').parent().find('.form-message-wrapper').show();
         } else {
-            $('select').addClass('is-error').parent().find('.form-message-wrapper').hide();
+            $('select').removeClass('is-error').parent().find('.form-message-wrapper').hide();
         }
     }
 });
