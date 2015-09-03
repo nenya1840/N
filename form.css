@@ -29,6 +29,35 @@ body {
     width: 980px;
 }
 
+
+/*Image*/
+
+.en_US.business-team-form .hero {
+    background-image: url("businessteam_lg_form.jpg");
+}
+
+
+/*p*/
+
+p {
+    margin: 0 0 1em 0;
+}
+
+.concierge-body .hero {
+    background-size: contain;
+    background-position: right top;
+    background-repeat: no-repeat;
+    height: 300px;
+}
+
+.column-padded-left {
+    padding-left: 4.5%;
+}
+
+.large-hide {
+    display: none;
+}
+
 .large-6 {
     width: 50%;
 }
@@ -375,6 +404,38 @@ abbr {
     color: #f44;
 }
 
+.is-validated .form-textbox:invalid,
+.form-textbox:invalid.is-validated,
+.is-validated .form-textbox.is-error,
+.form-textbox.is-error.is-validated,
+.is-validated .form-dropdown:invalid,
+.form-dropdown:invalid.is-validated,
+.is-validated .form-dropdown.is-error,
+.form-dropdown.is-error.is-validated {
+    border-color: #f44;
+    background: #ffecec;
+}
+
+.form-textbox.is-error-pattern ~ .form-message-wrapper.form-message-wrapper-invalid .form-message,
+.form-textbox.is-error.is-error-pattern ~ .form-message-wrapper.form-message-wrapper-invalid .form-message {
+    color: #f44;
+}
+
+.form-textbox:invalid,
+.form-textbox.is-error,
+.form-textbox:invalid.is-valid,
+.form-textbox.is-validated:invalid.is-valid,
+.is-validated .form-textbox:invalid.is-valid,
+.form-dropdown:invalid,
+.form-dropdown.is-error,
+.form-dropdown:invalid.is-valid,
+.form-dropdown.is-validated:invalid.is-valid,
+.is-validated .form-dropdown:invalid.is-valid {
+    color: #333;
+    border: 1px solid #d6d6d6;
+    background: transparent;
+}
+
 .is-validated .form-fieldset:invalid .form-message-wrapper.fieldset-message .form-message,
 .form-fieldset:invalid.is-validated .form-message-wrapper.fieldset-message .form-message,
 .is-validated .form-fieldset.is-error .form-message-wrapper.fieldset-message .form-message,
@@ -486,6 +547,10 @@ img {
     opacity: 0;
     cursor: pointer;
     z-index: 0;
+}
+
+.form-choice-selector:checked ~ .form-choice-selector-label .form-label {
+    color: #333;
 }
 
 .form-choice-selector {
@@ -689,5 +754,12 @@ button {
 }
 
 .icon {
-    behavior: url("icons.htc");
+    background-image: url("icon-chevron-down.svg");
+}
+
+.concierge-body .icon {
+    background-size: contain;
+    background-position: right top;
+    background-repeat: no-repeat;
+    height: 20px;
 }
